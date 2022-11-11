@@ -13,4 +13,5 @@ public class Game {
 	public void init() {
 		this.board.init();
 	}
+
 }

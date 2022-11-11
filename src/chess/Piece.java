@@ -5,4 +5,5 @@ public class Piece {
 	public Piece(String color) {
 		this.color = color;
 	}
+
 }
