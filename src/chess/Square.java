@@ -6,6 +6,14 @@ public class Square {
 	public Square(String color) {
 		this.color = color;
 	}
+
+	public boolean isOccupied() {
+		return piece != null ? true : false;
+	}
+
+	public Piece getPiece() {
+		return piece;
+	}
 	
 	public void occupy(Piece piece) {
 		this.piece = piece;

@@ -1,5 +1,4 @@
 package chess;
-import java.util.Arrays;
 public class Board {
 	private static Board board_instance = null;
 	Square[][] board;
@@ -15,6 +14,12 @@ public class Board {
 					} else {
 						board[row][file] = new Square("white");
 					}
+				} else {
+					if ((file & 1) != 0) {
+						board[row][file] = new Square("black");
+					} else {
+						board[row][file] = new Square("white");
+					}
 				}
 			}
 		}
@@ -26,9 +31,12 @@ public class Board {
 		}
 		return board_instance;
 	}
+
+	public Square[][] getBoard() {
+		return board;
+	}
 	
 	public void init() {
-		System.out.println(Arrays.deepToString(board));
 		//		initialize white pieces
 		board[0][0].occupy(new Rook("white"));
 		board[0][1].occupy(new Knight("white"));
@@ -81,6 +89,5 @@ public class Board {
 				}
 			}
 		}
-		System.out.println(Arrays.deepToString(board));
 	}
 }
