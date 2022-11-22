@@ -4,7 +4,7 @@ import static java.util.Map.entry;
 public class TerminalView {
   Map<String, String> pieces;
 
-  public TerminalView() {
+  public TerminalView(String characterType) {
     pieces = Map.ofEntries(
       entry("wPawn", "♙"),
       entry("wKing", "♔"),
@@ -21,6 +21,23 @@ public class TerminalView {
     );
   }
 
+  public TerminalView() {
+    pieces = Map.ofEntries(
+      entry("wPawn", "P"),
+      entry("wKing", "K"),
+      entry("wRook", "R"),
+      entry("wKnight", "N"),
+      entry("wBishop", "B"),
+      entry("wQueen", "Q"),
+      entry("bPawn", "p"),
+      entry("bKing", "k"),
+      entry("bRook", "r"),
+      entry("bKnight", "n"),
+      entry("bBishop", "b"),
+      entry("bQueen", "q")
+    );
+  }
+
   public static void main(String[] args) {
     Board board = Board.getInstance();
     board.init();
@@ -28,24 +45,23 @@ public class TerminalView {
     game.renderBoard(board);
   }
 
-  public void renderBoard(Board board) {
-    String outputLine = "";
-    for (int i=0; i<board.getBoard().length; i++) {
-      Square[] rank = board.getBoard()[i];
-      outputLine = (i + 1) + "";
-      for(int file=0; file<rank.length; file++) {
-        Square square = rank[file];
+  public void renderBoard(Board boardInstance) {
+    Square[][] board = boardInstance.getBoard();
+    for(int rank=board.length - 1; rank>=0; rank--) {
+      String outputLine = (rank + 1) + " ";
+      for (int file=0; file < board.length; file++) {
+        outputLine += " ";
+        Square square = board[rank][file];
         if (square.isOccupied()) {
           String pieceName = square.getPiece().getName();
-          outputLine += " " + pieces.get(pieceName) + " ";
+          outputLine += pieces.get(pieceName);
         } else {
-          outputLine += " . ";
+          outputLine += ".";
         }
       }
       System.out.println(outputLine);
     }
-    System.out.println("  a  b  c  d  e  f  g  h ");
-   
+    System.out.println("   ===============");
+    System.out.println("   a b c d e f g h");
   }
-  
 }

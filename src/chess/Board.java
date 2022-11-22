@@ -35,6 +35,10 @@ public class Board {
 	public Square[][] getBoard() {
 		return board;
 	}
+
+	public void movePiece(String from, String to) {
+		
+	}
 	
 	public void init() {
 		//		initialize white pieces
