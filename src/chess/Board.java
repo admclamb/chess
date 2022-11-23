@@ -37,12 +37,20 @@ public class Board {
 		return board;
 	}
 
-	public String movePiece(String move) {
-		String moveDestination = move.substring(move.length() - 2);
-
-		return "Kxg8";
+	public Boolean isValidMove(String move) {
+		return true;
 	}
-	
+
+	public void updatePiecePosition(int[] from, int[]to) {
+		Piece piece = board[from[0]][from[1]].unoccupy();
+		board[to[0]][to[1]].unoccupy();
+		board[to[0]][to[1]].occupy(piece);
+	}
+
+	public Boolean checkCheckmate() {
+		return false;
+	}
+
 	public void init() {
 		//		initialize white pieces
 		board[0][0].occupy(new Rook("white"));

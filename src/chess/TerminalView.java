@@ -40,10 +40,14 @@ public class TerminalView {
   }
 
   public static void main(String[] args) {
-    Board board = Board.getInstance();
-    board.init();
-    TerminalView game = new TerminalView();
-    game.renderBoard(board);
+    TerminalView view = new TerminalView();
+    Game game = new Game("White player", "Black player");
+    view.renderBoard(game.getBoard());
+    while(!game.getGameOverStatus()) {
+
+      String move = view.move(game.getTurn());
+      game.makeMove(move);
+    }
   }
 
   public void renderBoard(Board boardInstance) {
@@ -66,11 +70,12 @@ public class TerminalView {
     System.out.println("   a b c d e f g h");
   }
 
-  public String move() {
+  public String move(Player player) {
     Scanner input = new Scanner(System.in);
+    System.out.println(player.getColor() + " move:");
     String move = input.nextLine();
     input.close();
-    System.out.println("You entered: "+ move);
-    return "Yo";
+    return move;
   }
+
 }
