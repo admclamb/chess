@@ -1,4 +1,5 @@
 package chess;
+import java.util.Scanner;
 import java.util.Map;
 import static java.util.Map.entry;
 public class TerminalView {
@@ -63,5 +64,13 @@ public class TerminalView {
     }
     System.out.println("   ===============");
     System.out.println("   a b c d e f g h");
+  }
+
+  public String move() {
+    Scanner input = new Scanner(System.in);
+    String move = input.nextLine();
+    input.close();
+    System.out.println("You entered: "+ move);
+    return "Yo";
   }
 }

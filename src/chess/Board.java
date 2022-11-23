@@ -2,7 +2,7 @@ package chess;
 public class Board {
 	private static Board board_instance = null;
 	Square[][] board;
-	
+	String[] moves;
 	private Board() {
 		board = new Square[8][8];
 		for (int row=0; row<8; row++) {
@@ -23,6 +23,7 @@ public class Board {
 				}
 			}
 		}
+		moves = new String[] {};
 	}
 	
 	public static Board getInstance() {
@@ -36,8 +37,10 @@ public class Board {
 		return board;
 	}
 
-	public void movePiece(String from, String to) {
-		
+	public String movePiece(String move) {
+		String moveDestination = move.substring(move.length() - 2);
+
+		return "Kxg8";
 	}
 	
 	public void init() {
