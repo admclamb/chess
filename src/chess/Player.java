@@ -1,7 +1,7 @@
 package chess;
 
 public class Player {
-	String name;
+	private String name;
 	private String color;
 	int wins;
 	int loses;
@@ -18,5 +18,9 @@ public class Player {
 
 	public String getColor() {
 		return color;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

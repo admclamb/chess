@@ -4,7 +4,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 public class TerminalView {
   Map<String, String> pieces;
-
+  public static Scanner input = new Scanner(System.in);
   public TerminalView(String characterType) {
     pieces = Map.ofEntries(
       entry("wPawn", "♙"),
@@ -48,6 +48,7 @@ public class TerminalView {
       String move = view.move(game.getTurn());
       game.makeMove(move);
     }
+    input.close();
   }
 
   public void renderBoard(Board boardInstance) {
@@ -71,10 +72,9 @@ public class TerminalView {
   }
 
   public String move(Player player) {
-    Scanner input = new Scanner(System.in);
+
     System.out.println(player.getColor() + " move:");
     String move = input.nextLine();
-    input.close();
     return move;
   }
 
