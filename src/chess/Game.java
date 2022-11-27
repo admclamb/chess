@@ -31,8 +31,14 @@ public class Game {
 	}
 
 	public void makeMove(String move) {
-		if (board.isValidMove(move)) {
-
+		try {
+			if (board.isValidMove(move)) {
+				board.makeMove(move);
+			} else {
+				throw new IllegalStateException(move + "is not a valid move");
+			}
+		} catch(Exception error) {
+			System.out.println(error);
 		}
 	}
 

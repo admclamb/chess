@@ -41,6 +41,9 @@ public class Board {
 		return true;
 	}
 
+	public void makeMove(String move) {
+	}
+
 	public void updatePiecePosition(int[] from, int[]to) {
 		Piece piece = board[from[0]][from[1]].unoccupy();
 		board[to[0]][to[1]].unoccupy();
