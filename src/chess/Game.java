@@ -14,8 +14,8 @@ public class Game {
 	}
 	
 	public void init() {
-		this.board.init();
-		this.turn = playerWhite;
+		board.init();
+		turn = playerWhite;
 	}
 
 	public Boolean getGameOverStatus() {

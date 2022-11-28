@@ -42,9 +42,9 @@ public class TerminalView {
   public static void main(String[] args) {
     TerminalView view = new TerminalView();
     Game game = new Game("White player", "Black player");
-    view.renderBoard(game.getBoard());
+    
     while(!game.getGameOverStatus()) {
-
+      view.renderBoard(game.getBoard());
       String move = view.move(game.getTurn());
       game.makeMove(move);
     }
@@ -72,7 +72,6 @@ public class TerminalView {
   }
 
   public String move(Player player) {
-
     System.out.println(player.getColor() + " move:");
     String move = input.nextLine();
     return move;
