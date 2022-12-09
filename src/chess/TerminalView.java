@@ -74,6 +74,7 @@ public class TerminalView {
   public String move(Player player) {
     System.out.println(player.getColor() + " move:");
     String move = input.nextLine();
+    System.out.println(ChessNotation.parse(move));
     return move;
   }
 
