@@ -26,18 +26,18 @@ public class ChessNotation {
     return move.charAt(0) + "";
   }
 
-  public static HashMap<String, String> parse(String move) {
-    HashMap<String, String> moveMap = new HashMap<String, String>();
+  public static Notation parse(String move) {
+    Notation moveMap = new Notation();
     // if move is a pawn move
     if (move.length() == 2) {
-      moveMap.put("piece", "p");
-      moveMap.put("specificity", "");
-      moveMap.put("destination", getDestination(move));
+      moveMap.setPiece("p");
+      moveMap.setSpecificity("");
+      moveMap.setDestination(getDestination(move));
       return moveMap;
     }
-    moveMap.put("piece", getPiece(move));
-    moveMap.put("specificity", getPieceSpecificity(move));
-    moveMap.put("destination", getDestination(move));
+    moveMap.setPiece(getPiece(move));
+    moveMap.setSpecificity(getPieceSpecificity(move));
+    moveMap.setDestination(getDestination(move));
     return moveMap;
   }
 }
