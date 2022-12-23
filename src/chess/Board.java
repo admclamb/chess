@@ -1,4 +1,6 @@
 package chess;
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
 public class Board {
 	private static Board board_instance = null;
 	Square[][] board;
@@ -41,7 +43,41 @@ public class Board {
 		return true;
 	}
 
+	public ArrayList<Piece> findPiece(String notatedPiece) {
+		ArrayList<Piece> pieces = new ArrayList<Piece>();
+		for (int row=0; row<8; row++) {
+			for (int file=0; file<8; file++) {
+				if (board[row][file].isOccupied()) {
+					Piece piece = board[row][file].getPiece();
+					if (piece.getName() == notatedPiece) {
+						pieces.add(piece);
+					}
+				}
+			}
+		}
+		return pieces;
+	}
+
+	public ArrayList<Piece> piecesThatHaveMove(Notation notatedMove) {
+		ArrayList<Piece> pieces = new ArrayList<Piece>();
+		ArrayList<Piece> foundPieces = findPiece(notatedMove.getPiece());
+		if (foundPieces.size() == 0) {
+			throw new NoSuchElementException();
+		} 
+		for(Piece piece : foundPieces) {
+				if (piece.hasMove(notatedMove.getDestination()));
+		}
+		return pieces;
+	}
+
 	public void makeMove(String move) {
+		Notation notatedMove = ChessNotation.parse(move);
+		String pieceToFind = notatedMove.getPiece();
+		ArrayList<Piece> foundPieces = findPiece(pieceToFind);
+		if (foundPieces.size() > 0) {
+
+		}
+
 	}
 
 	public void updatePiecePosition(int[] from, int[]to) {

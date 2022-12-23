@@ -1,5 +1,4 @@
 package chess;
-import java.util.HashMap;
 
 public class ChessNotation {
 
